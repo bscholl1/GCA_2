@@ -1,18 +1,15 @@
-f = h5py.File('/content/drive/My Drive/images_no_cats.h5', 'r')   # import the images 
-
-images_train = f['Train/images'][...]
-labels_train = f['Train/labels'][...]
-
-images_test = f['Test/images'][...]
-labels_test = f['Test/labels'][...]
-
-f.close()
-
-
-
-
 from h5py import *
 f = File('images_no_cats.h5', 'r')
 images = f['images'][...]
 labels = f['labels'][...]
 f.close()
+
+num_train = images_train.shape[0]
+images_train_flatten = images_train.flatten().reshape(num_train, 100*100*3)
+print("Number Training Images: ", num_train)
+print("Shape of Flattened Training Images Array: ", images_train_flatten.shape)
+
+num_test = images_test.shape[0]
+images_test_flatten = images_test.flatten().reshape(num_test, 100*100*3)
+print("Number Testing Images: ", num_test)
+print("Shape of Flattened Testing Images Array: ", images_test_flatten.shape)
