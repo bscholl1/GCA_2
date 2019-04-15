@@ -1,0 +1,18 @@
+f = h5py.File('/content/drive/My Drive/images_no_cats.h5', 'r')   # import the images 
+
+images_train = f['Train/images'][...]
+labels_train = f['Train/labels'][...]
+
+images_test = f['Test/images'][...]
+labels_test = f['Test/labels'][...]
+
+f.close()
+
+
+
+
+from h5py import *
+f = File('images_no_cats.h5', 'r')
+images = f['images'][...]
+labels = f['labels'][...]
+f.close()
