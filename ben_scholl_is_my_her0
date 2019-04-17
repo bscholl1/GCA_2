@@ -1,0 +1,35 @@
+# https://towardsdatascience.com/object-detection-with-10-lines-of-code-d6cb4d86f606
+# the above site contains the brief description for the object detection, created by imageAI
+
+#http://imageai.org/
+# ImageAI is a python library which contains code which can be used to build /
+# systems/programs that utilize detection capability
+
+import tensorflow as tf
+import numpy as np
+import scipy as sp
+!pip install Pillow
+
+import h5py
+import matplotlib as mpl
+import keras as keras
+
+#!pip3 install https://github.com/OlafenwaMoses/ImageAI/releases/download/2.0.2/imageai-2.0.2-py3-none-any.whl
+  
+from imageai.Detection import ObjectDetection
+import os
+
+execution_path = os.getcwd()
+
+detector = ObjectDetection()
+detector.setModelTypeAsRetinaNet()
+
+detector.setModelPath( os.path.join(execution_path , '/content/drive/My Drive/images.h5'))
+detector.loadModel()
+detections = detector.detectObjectsFromImage(input_image=os.path.join(execution_path , "image.jpg"), output_image_path=os.path.join(execution_path , "imagenew.jpg"))
+
+
+for eachObject in detections:
+    print(eachObject["name"] , " : " , eachObject["percentage_probability"] )
+                                    
+detections, extracted_images = detector.detectObjectsFromImage(input_image=os.path.join(execution_path , "image.jpg"), output_image_path=os.path.join(execution_path , "imagenew.jpg"), extract_detected_objects=True)
