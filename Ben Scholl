@@ -1,3 +1,16 @@
+# Original run with Al's set-up
+# Run the model with 1000 iterations, original images (no extras), and learning rate .002
+
+d = model(train_set_x.T, labels_train, test_set_x.T, labels_test, num_iterations = 1000, learning_rate = 0.002, print_cost = True)
+
+***Results
+Cost after iteration 990: 0.519753
+train accuracy: 77.11691259931897 %
+test accuracy: 70.06802721088435 %
+
+
+
+
 # Access images in the second set
 
 from h5py import *
@@ -30,7 +43,10 @@ total_trains_set = np.concatenate([train_set_x, train_set_x2], axis = 0)
 
 total_trains_labels = np.concatenate([labels_train, labels], axis = 0)
 
-# Run the model with 10000 iteration
+
+
+
+### Run the model with 10,000 iterations and 4,000 extra non-cat images
 
 d = model(total_trains_set.T, total_trains_labels, test_set_x.T, labels_test, num_iterations = 10000, learning_rate = 0.002, print_cost = True)
 
@@ -42,6 +58,39 @@ train accuracy: 81.80844735276621 %
 test accuracy: 70.74829931972789 %
 
 
+### Run the model with 1000 iterations and learning rate of .001, with 4,000 extra non-cat images
+
+d = model(total_trains_set.T, total_trains_labels, test_set_x.T, labels_test, num_iterations = 1000, learning_rate = 0.001, print_cost = True)
 
 
+
+***Results
+
+Cost after iteration 990: 0.534266
+train accuracy: 73.0874479476502 %
+test accuracy: 74.02597402597402 %
+
+
+
+### Run the model with 500 iterations and learning rate of .0005, with the 4,000 extra non-cat images
+
+d = model(total_trains_set.T, total_trains_labels, test_set_x.T, labels_test, num_iterations = 500, learning_rate = 0.0005, print_cost = True)
+
+***Results
+Cost after iteration 490: 0.571800
+train accuracy: 69.16121356335515 %
+test accuracy: 71.05751391465677 %
+
+
+
+### Run the model with 1000 iterations and learning rate of .0005, plus the 4,000 non-cat images
+
+d = model(total_trains_set.T, total_trains_labels, test_set_x.T, labels_test, num_iterations = 1000, learning_rate = 0.0005, print_cost = True)
+
+
+***Results
+
+Cost after iteration 990: 0.553365
+train accuracy: 71.1600237953599 %
+test accuracy: 72.2943722943723 %
 
