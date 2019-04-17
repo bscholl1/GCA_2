@@ -37,8 +37,11 @@ d = model(total_trains_set.T, total_trains_labels, test_set_x.T, labels_test, nu
 
 ***Results: 
 
+Cost after iteration 9990: 0.442467
 train accuracy: 81.80844735276621 %
 test accuracy: 70.74829931972789 %
+
+
 
 
 
